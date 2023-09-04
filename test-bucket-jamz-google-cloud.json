@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "linear-cinema-397902",
+  "private_key_id": "90062802791e54d583ced037f876dd1d24ea568f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9TGW15dNB3rqk\n5rQi/JLMpq4V5XJ5jEjsmx4KLoZFMUhegfX40ALQ2+JZG3CojDbpoO9GF3aron50\noVgxkK3CU3pojjM6e6Em9A6V1OO5zqhrAsRYLEIpJhHh8jy17NdGRZdwc0nsFHap\nmPdtYfIpFGcQoIo7fSYqW4HBR4w+r1/KbloTROkIxkwxmor4mrnZG6kyVcbaGsR+\npjlxNEVzNW+q3dOZ+RGWVJS+vYc0T6+Xncf86N6Gn/kP1E6u61jjFRM3lTIL/L5r\nYZd2FPClLOZo9+T9rlaaoUxolcPMKts++GZ1w8D1dFRKFU2Q0LhZqAjjFiFDCEim\ncFrcSG0hAgMBAAECggEAFTTAhSzSqoOm0Y/VuMCmOl5mzKWoWhT822KyLg5RtOEl\nPA8fjMjSs+6aEATqrTsN8MS6YVYCEY6xz2N+w4izanxbD2j0tLXCUyCOnLrdawSL\nafeEouMMY1s0MCVopzG52RG1Oh/0NUoClBPCjiKlk/QI6rwtWCY4NxEKu2oGPERM\nZa1YALKRHI06dPtDc+tpbLuZBQlsWKG3Dba570K2iQvQkjKn6GSG9qnWutrse4eN\nZzYBBWp8s7Evk4oHMRYaoHKbm39NMLWD0pqJP1WBJ8TVEiySowdbzA34WkaveV8/\nbfSERCd5YrTGzG2aQFrvDxK1Sb5g1MpHEhOSXPf7UQKBgQDiX3DTx8Hb9Fwqt1od\nXnUDZjVuMtfVFsXNAeZtuaKt2FpQnZytistv1RK5a42mIOVaJlnfu4CBscmnWjFM\n5da7uTqROTAftFTx+E0ENDwszdRc0OX6D4IwHGavJORZNQjL4lo/0zLbXhMV7WqA\nklhf1ymK6rjzVip842aDAjr8aQKBgQDWEsoRqkrXEDxh2yCw27J50LAI/bc0Fz3/\nvrqqMxrM5ubisWbEylKkRH5vzuEz6uwlGs+GDK9ypPu5ba5HcPBKVIio0RgnFJYc\nNVl/x1WNlYfppj0/xaDsms/xwJe8O/pBUnSP1DzBopEydujch5hQoQwrganzI4vH\nr/FS16Az+QKBgQDEMpYWZ36ExcCQIUPQSoq+PHq4nQZloIwlR61QkmEFrYtxbXlb\nC/2QWqsU27v0LXS68pxYhik1v0KYclpiXJ4FK+Av99HW2LP62ArgRumUp3yUSVXZ\nqlFao3L3/9CN5KJQG0m/IaxlZp7CFXiGINDJmDFgPlm4RYkjnu+9QlSfaQKBgAOW\nKQCGw946jWhuTWvpImJcFrbv2UPsJ8PDJEl5tbc9Hx0pL7mYUi4iX6Pr6WX/R5mP\ni26Jg9792KHQrpzPzZbRN8DsT+VHuQQb+LXlVw+aM768ZEZPP1T3ewhn26Lxtk2l\n3gIS4jm0SY5444neU7T2HcgU0g4ayFq+HeLvbeWxAoGAFY9vHVVGMzM2oXhcWeWt\nI+Or3cSkgegzi/9afxF2EKXntHrFh0JpQkZq19Zc3/w22oXWSFkSjog5KeBgcZhm\nvAyFGEPw2P5PxKiMlXRyDza8qTA/o31d/mV4dch2muRSO669s8BUJxNQQ48HzzEy\n34ghN88HW1ORbKDFhCcEDgU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-bucket@linear-cinema-397902.iam.gserviceaccount.com",
+  "client_id": "115773545635818083104",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-bucket%40linear-cinema-397902.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -4,9 +4,12 @@ import {
   Body,
   UploadedFile,
   UseInterceptors,
+  Request,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from '../services/upload.service';
+import CustomRequest from 'src/common/interfaces/request.interface';
+import ORIGINMEDIA from 'src/common/enums/media.enum';
 
 @Controller('upload')
 export class UploadController {
@@ -16,14 +19,17 @@ export class UploadController {
   @UseInterceptors(FileInterceptor('file'))
   async uploadMedia(
     @UploadedFile() file: Express.Multer.File,
-    @Body('path') path: string,
+    @Body('origin') origin: ORIGINMEDIA,
     @Body('bucket') bucket: string,
+    @Request() reques: CustomRequest,
   ) {
     return await this.uploadService.save(
-      path,
+      reques.database,
+      origin,
       file.mimetype,
       file.buffer,
-      [{ mediaId: path }],
+      file.originalname,
+      [{ mediaId: origin }],
       bucket,
     );
   }

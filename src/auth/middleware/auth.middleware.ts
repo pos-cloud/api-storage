@@ -16,14 +16,12 @@ export class AuthMiddleware implements NestMiddleware {
             database: 'sugner',
             clientId: '64a6f0d40e715e06d48eb00b',
           },
-          'secret_key',
+          process.env.TOKEN_SECRET || '',
         );
-        console.log(token);
         const dataJWT: DataJWT = jwt.decode(
           token,
           process.env.TOKEN_SECRET || '',
         );
-        console.log(dataJWT);
 
         const database: string = dataJWT?.database;
         const userId: string = dataJWT?.user;

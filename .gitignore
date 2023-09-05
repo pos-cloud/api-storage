@@ -9,6 +9,8 @@ lerna-debug.log*
 
 yarn.lock
 
+key-google-cloud.json
+
 .env
 
 # Diagnostic reports (https://nodejs.org/api/report.html)

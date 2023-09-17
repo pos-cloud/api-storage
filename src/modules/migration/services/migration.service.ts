@@ -11,8 +11,7 @@ export class MigrationService {
     private readonly uploadService: UploadService,
   ) {}
 
-  async migrationImages() {
-    const database: string = 'pizzaya';
+  async migrationImages(database: string) {
     await this.databaseService.initConnection(database);
     const conllectionEmun = Object.values(ORIGINMEDIA);
 
@@ -75,7 +74,7 @@ export class MigrationService {
           }
         });
         ///////////////////////////////////
-        console.log(newpromise);
+  
         // break
         promises.push(newpromise);
         //   const url = await this.uploadService.save(

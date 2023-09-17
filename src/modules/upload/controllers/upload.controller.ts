@@ -21,10 +21,10 @@ export class UploadController {
     @UploadedFile() file: Express.Multer.File,
     @Body('origin') origin: ORIGINMEDIA,
     @Body('bucket') bucket: string,
-    @Request() reques: CustomRequest,
+    @Request() request: CustomRequest,
   ) {
     return await this.uploadService.save(
-      reques.database,
+      request.database,
       origin,
       file.mimetype,
       file.buffer,

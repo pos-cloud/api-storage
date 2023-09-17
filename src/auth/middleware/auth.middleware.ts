@@ -13,7 +13,7 @@ export class AuthMiddleware implements NestMiddleware {
         const token = jwt.encode(
           {
             user: '64a6f0d40e715e06d48eb00b',
-            database: 'sugner',
+            database: 'pizzaya',
             clientId: '64a6f0d40e715e06d48eb00b',
           },
           process.env.TOKEN_SECRET || '',

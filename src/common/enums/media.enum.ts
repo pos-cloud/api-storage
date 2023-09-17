@@ -2,7 +2,7 @@ enum ORIGINMEDIA {
   ARTICLES = 'articles',
   CATEGORIES = 'categories',
   MAKES = 'makes',
-  COMPANY = 'company',
+  COMPANY = 'companies',
   RESOURCES = 'resources',
 }
 

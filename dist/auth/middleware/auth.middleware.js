@@ -13,13 +13,8 @@ let AuthMiddleware = class AuthMiddleware {
     use(req, res, next) {
         var _a;
         if ((_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) {
-            console.log(req.headers.authorization);
+            const token = req.headers.authorization.replace(/['"]+/g, '');
             try {
-                const token = jwt.encode({
-                    user: '64a6f0d40e715e06d48eb00b',
-                    database: 'pizzaya',
-                    clientId: '64a6f0d40e715e06d48eb00b',
-                }, process.env.TOKEN_SECRET || '');
                 const dataJWT = jwt.decode(token, process.env.TOKEN_SECRET || '');
                 const database = dataJWT === null || dataJWT === void 0 ? void 0 : dataJWT.database;
                 const userId = dataJWT === null || dataJWT === void 0 ? void 0 : dataJWT.user;

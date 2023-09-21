@@ -5,6 +5,7 @@ import {
   UploadedFile,
   UseInterceptors,
   Request,
+  Delete,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from '../services/upload.service';
@@ -32,5 +33,13 @@ export class UploadController {
       [{ mediaId: origin }],
       bucket,
     );
+  }
+
+  @Delete()
+  async deleteMedia(
+    @Body('origin') origin: ORIGINMEDIA,
+    @Body('bucket') bucket: string,
+  ) {
+    return await this.uploadService.deleteFile(origin, bucket);
   }
 }

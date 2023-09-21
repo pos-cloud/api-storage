@@ -37,7 +37,7 @@ export class UploadService {
       }
       this.validOrigin(origin);
 
-      name = Date.now() + '-' + name;
+      name = Date.now() + '-' + name.replace(/ /g, '-');
 
       const originPath = [database, origin, name].join('/');
 
@@ -71,6 +71,13 @@ export class UploadService {
     }
   }
 
+  async deleteFile(
+    origin: string,
+    gcp_bucket: string = process.env.GCP_BUCKET,
+  ) {
+    const deleteOptions = {};
+    await this.storage.bucket(gcp_bucket).file(origin).delete(deleteOptions);
+  }
   private validOrigin(origin: ORIGINMEDIA) {
     if (!Object.values(ORIGINMEDIA).includes(origin)) {
       throw new Error('invalid source path');

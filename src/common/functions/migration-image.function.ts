@@ -20,9 +20,7 @@ export const readFile = async (
       filename,
     );
 
-    console.log(urlFile);
     const file = readFileSync(urlFile);
-    console.log(file);
     return file;
   } catch (err) {
     return null;

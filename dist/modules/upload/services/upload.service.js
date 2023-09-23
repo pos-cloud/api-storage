@@ -48,16 +48,33 @@ let UploadService = class UploadService {
             return url;
         }
         catch (err) {
-            throw new common_1.HttpException('Server error', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+            throw err;
         }
     }
     async deleteFile(origin, gcp_bucket = process.env.GCP_BUCKET) {
-        const deleteOptions = {};
-        await this.storage.bucket(gcp_bucket).file(origin).delete(deleteOptions);
+        try {
+            const urlParts = origin.split('?');
+            const pathParts = urlParts[0].split('/');
+            const resource = pathParts.slice(4, pathParts.length).join('/');
+            const deleteOptions = {};
+            await this.storage
+                .bucket(gcp_bucket)
+                .file(resource)
+                .delete(deleteOptions);
+        }
+        catch (err) {
+            if (err.code == 404) {
+                throw new common_1.BadRequestException({
+                    messge: `Could not delete file, check url`,
+                    errors: err.errors,
+                });
+            }
+            throw new common_1.BadRequestException(err);
+        }
     }
     validOrigin(origin) {
         if (!Object.values(media_enum_1.default).includes(origin)) {
-            throw new Error('invalid source path');
+            throw new common_1.BadRequestException('invalid source path');
         }
     }
 };

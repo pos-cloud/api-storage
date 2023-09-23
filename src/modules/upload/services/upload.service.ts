@@ -67,7 +67,7 @@ export class UploadService {
 
       return url;
     } catch (err) {
-      throw new HttpException('Server error', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw err;
     }
   }
 
@@ -75,12 +75,30 @@ export class UploadService {
     origin: string,
     gcp_bucket: string = process.env.GCP_BUCKET,
   ) {
-    const deleteOptions = {};
-    await this.storage.bucket(gcp_bucket).file(origin).delete(deleteOptions);
+    try {
+      const urlParts = origin.split('?');
+      const pathParts = urlParts[0].split('/');
+      const resource = pathParts.slice(4, pathParts.length).join('/');
+
+      const deleteOptions = {};
+
+      await this.storage
+        .bucket(gcp_bucket)
+        .file(resource)
+        .delete(deleteOptions);
+    } catch (err) {
+      if (err.code == 404) {
+        throw new BadRequestException({
+          messge: `Could not delete file, check url`,
+          errors: err.errors,
+        });
+      }
+      throw new BadRequestException(err);
+    }
   }
   private validOrigin(origin: ORIGINMEDIA) {
     if (!Object.values(ORIGINMEDIA).includes(origin)) {
-      throw new Error('invalid source path');
+      throw new BadRequestException('invalid source path');
     }
   }
 }

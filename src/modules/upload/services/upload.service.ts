@@ -45,7 +45,6 @@ export class UploadService {
         (obj, item) => Object.assign(obj, item),
         {},
       );
-
       const file = this.storage.bucket(gcp_bucket).file(originPath);
 
       const stream = file.createWriteStream();
@@ -60,10 +59,7 @@ export class UploadService {
         metadata: object,
       });
 
-      const [url] = await file.getSignedUrl({
-        action: 'read',
-        expires: '2100-01-01',
-      });
+      const url =  file.publicUrl();
 
       return url;
     } catch (err) {

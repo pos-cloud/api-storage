@@ -59,7 +59,7 @@ export class UploadService {
         metadata: object,
       });
 
-      const url =  file.publicUrl();
+      const url = file.publicUrl();
 
       return url;
     } catch (err) {
@@ -72,10 +72,12 @@ export class UploadService {
     gcp_bucket: string = process.env.GCP_BUCKET,
   ) {
     try {
-      const urlParts = origin.split('?');
-      const pathParts = urlParts[0].split('/');
-      const resource = pathParts.slice(4, pathParts.length).join('/');
-
+      // const urlParts = origin.split('?');
+      const pathParts = origin.split('/');
+      const resource = pathParts
+        .slice(4, pathParts.length)
+        .join('/')
+        .replace(/%2F/g, '/');
       const deleteOptions = {};
 
       await this.storage

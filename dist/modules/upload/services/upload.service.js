@@ -41,10 +41,7 @@ let UploadService = class UploadService {
             await file.setMetadata({
                 metadata: object,
             });
-            const [url] = await file.getSignedUrl({
-                action: 'read',
-                expires: '2100-01-01',
-            });
+            const url = file.publicUrl();
             return url;
         }
         catch (err) {
@@ -53,9 +50,11 @@ let UploadService = class UploadService {
     }
     async deleteFile(origin, gcp_bucket = process.env.GCP_BUCKET) {
         try {
-            const urlParts = origin.split('?');
-            const pathParts = urlParts[0].split('/');
-            const resource = pathParts.slice(4, pathParts.length).join('/');
+            const pathParts = origin.split('/');
+            const resource = pathParts
+                .slice(4, pathParts.length)
+                .join('/')
+                .replace(/%2F/g, '/');
             const deleteOptions = {};
             await this.storage
                 .bucket(gcp_bucket)

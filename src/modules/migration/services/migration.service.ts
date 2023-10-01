@@ -110,7 +110,7 @@ export class MigrationService {
       case 'makes':
         nameDirectory = 'make';
         break;
-      case 'companies':
+      case 'config':
         nameDirectory = 'company';
         break;
       case 'resources':

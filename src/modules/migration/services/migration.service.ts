@@ -27,7 +27,9 @@ export class MigrationService {
 
       const itemCollection = this.databaseService.getCollection(collection);
 
-      const documents = itemCollection.find({}).toArray();;
+      const documents = itemCollection.find({}).toArray();
+
+      console.log('32',documents)
 
       const arrayItem = this.arrayPromiseDocument(
         documents,

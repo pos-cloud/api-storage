@@ -17,7 +17,7 @@ export class MigrationService {
   // COMPANY = 'configs',
   // RESOURCES = 'resources',
   async migrationImages(database: string) {
-    console.log(database);
+    console.log('20',database);
     await this.databaseService.initConnection(database);
     const collectionEmun = Object.values(ORIGINMEDIA);
 

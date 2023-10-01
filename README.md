@@ -78,13 +78,13 @@ jobs:
        docker cp pizzaya api-storage:/app/dist
 
 
-db.getCollection("configs").update({ _id : ObjectId("5ee249357591127576e1fbaf")},
-{
-    $set: {
-        "picture": "5ee249357591127576e1fbaf-logos pizza ya1.png",
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
 
-    }
-},{upsert:false,multi:false})
 
 1- Pasar todas las carpetas al directorio /dist
 2- Hacer un update de todos los config para que el archivo este en .picture

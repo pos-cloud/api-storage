@@ -11,6 +11,11 @@ export class MigrationService {
     private readonly uploadService: UploadService,
   ) {}
 
+  // ARTICLES = 'articles',
+  // CATEGORIES = 'categories',
+  // MAKES = 'makes',
+  // COMPANY = 'configs',
+  // RESOURCES = 'resources',
   async migrationImages(database: string) {
     await this.databaseService.initConnection(database);
     const conllectionEmun = Object.values(ORIGINMEDIA);
@@ -22,7 +27,7 @@ export class MigrationService {
 
       const itemCollection = this.databaseService.getCollection(collection);
 
-      const documents = itemCollection.find({});
+      const documents = itemCollection.find({}).toArray();;
 
       const arrayItem = this.arrayPromiseDocument(
         documents,

@@ -30,7 +30,7 @@ export class MigrationService {
 
       const itemCollection = this.databaseService.getCollection(collection);
 
-      const documents = itemCollection.find({}).toArray();
+      const documents = itemCollection.find({});
 
       console.log('32',documents)
 

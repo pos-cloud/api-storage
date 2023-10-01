@@ -18,11 +18,13 @@ export class MigrationService {
   // RESOURCES = 'resources',
   async migrationImages(database: string) {
     await this.databaseService.initConnection(database);
-    const conllectionEmun = Object.values(ORIGINMEDIA);
+    const collectionEmun = Object.values(ORIGINMEDIA);
+
+    console.log("23",collectionEmun)
 
     const promises: Promise<any>[] = [];
 
-    for (let collection of conllectionEmun) {
+    for (let collection of collectionEmun) {
       let nameDirectory: string = this.getDirectory(collection);
 
       const itemCollection = this.databaseService.getCollection(collection);

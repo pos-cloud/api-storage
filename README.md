@@ -73,3 +73,20 @@ jobs:
       - run: docker rm -f api-storage
       - run: docker build -t api-storage -f Dockerfile.dev .
       - run: docker run -v /home:/home --restart unless-stopped --net host --name api-storage -d -it -p 3000:3000 api-storage
+
+
+       docker cp pizzaya api-storage:/app/dist
+
+
+db.getCollection("configs").update({ _id : ObjectId("5ee249357591127576e1fbaf")},
+{
+    $set: {
+        "picture": "5ee249357591127576e1fbaf-logos pizza ya1.png",
+
+    }
+},{upsert:false,multi:false})
+
+1- Pasar todas las carpetas al directorio /dist
+2- Hacer un update de todos los config para que el archivo este en .picture
+3- Conseguir todos los token de cada cliente 
+4- Ejecutar los post

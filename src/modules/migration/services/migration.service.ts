@@ -11,17 +11,9 @@ export class MigrationService {
     private readonly uploadService: UploadService,
   ) {}
 
-  // ARTICLES = 'articles',
-  // CATEGORIES = 'categories',
-  // MAKES = 'makes',
-  // COMPANY = 'configs',
-  // RESOURCES = 'resources',
   async migrationImages(database: string) {
-    console.log('20',database);
     await this.databaseService.initConnection(database);
     const collectionEmun = Object.values(ORIGINMEDIA);
-
-    console.log("23",collectionEmun)
 
     const promises: Promise<any>[] = [];
 
@@ -31,8 +23,6 @@ export class MigrationService {
       const itemCollection = this.databaseService.getCollection(collection);
 
       const documents = itemCollection.find({});
-
-      console.log('32',documents)
 
       const arrayItem = this.arrayPromiseDocument(
         documents,
@@ -59,11 +49,7 @@ export class MigrationService {
     const promises: Promise<any>[] = [];
 
     for await (const document of documents) {
-      console.log('52',document)
       const file = await readFile(database, nameDirectory, document.picture);
-      console.log('54',database);
-      console.log('55',nameDirectory);
-      console.log('56',file)
 
       if (file) {
         const newpromise = new Promise(async (resolve, reject) => {

@@ -57,3 +57,19 @@ $ yarn run start:prod
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+name: donweb-Prod
+on:
+  push:
+    branches: [ dev ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: prod
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker rm -f api-storage
+      - run: docker build -t api-storage -f Dockerfile.dev .
+      - run: docker run -v /home:/home --restart unless-stopped --net host --name api-storage -d -it -p 3000:3000 api-storage

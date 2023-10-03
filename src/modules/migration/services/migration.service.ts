@@ -20,7 +20,11 @@ export class MigrationService {
     for (let collection of collectionEmun) {
       let nameDirectory: string = this.getDirectory(collection);
 
+      console.log(nameDirectory)
+
       const itemCollection = this.databaseService.getCollection(collection);
+
+      console.log(itemCollection)
 
       const documents = itemCollection.find({});
 
@@ -35,7 +39,7 @@ export class MigrationService {
     }
 
     await Promise.all(promises).then((values) => {
-      console.log('values',values);
+      //console.log('values',values);
     });
   }
 

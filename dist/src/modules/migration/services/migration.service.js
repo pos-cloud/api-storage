@@ -39,7 +39,6 @@ let MigrationService = class MigrationService {
             promises.concat(arrayItem);
         }
         await Promise.all(promises).then((values) => {
-            console.log('values', values);
         });
     }
     async arrayPromiseDocument(documents, database, nameDirectory, itemCollection, collection) {

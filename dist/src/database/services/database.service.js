@@ -25,7 +25,7 @@ let DatabaseService = class DatabaseService {
                 this.client = await mongodb_1.MongoClient.connect(mongoUri);
                 this.database = this.client.db(databaseName);
             }
-            console.log('Conexión con MongoDB establecida');
+            console.log('Conexión con MongoDB establecida:' + databaseName);
         }
         catch (error) {
             console.error('Error al conectar con MongoDB:', error);

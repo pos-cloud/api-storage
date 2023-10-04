@@ -20,11 +20,7 @@ export class MigrationService {
     for (let collection of collectionEmun) {
       let nameDirectory: string = this.getDirectory(collection);
 
-      console.log(nameDirectory)
-
       const itemCollection = this.databaseService.getCollection(collection);
-
-      console.log(itemCollection)
 
       const documents = itemCollection.find({});
 

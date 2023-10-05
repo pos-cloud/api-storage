@@ -75,7 +75,7 @@ jobs:
       - run: docker run -v /home:/home --restart unless-stopped --net host --name api-storage -d -it -p 3000:3000 api-storage
 
 
-       docker cp pizzaya api-storage:/app/dist
+       docker cp rango api-storage:/app/dist
 
 
 db.configs.find({}).forEach(function(doc) {
@@ -90,3 +90,207 @@ db.configs.find({}).forEach(function(doc) {
 2- Hacer un update de todos los config para que el archivo este en .picture
 3- Conseguir todos los token de cada cliente 
 4- Ejecutar los post
+
+
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { companyPicture: "https://storage.googleapis.com/poscloud/bardo/companies/1696415011397-bardo-(2).png" } }
+    );
+});
+
+
+
+docker cp 1516 api-storage:/app/dist
+docker cp aaron api-storage:/app/dist
+docker cp bardo api-storage:/app/dist
+docker cp bauma api-storage:/app/dist
+docker cp buendescanso api-storage:/app/dist
+docker cp chemaxfullcar api-storage:/app/dist
+docker cp desdeelllano api-storage:/app/dist
+docker cp donaelena api-storage:/app/dist
+docker cp elestablo api-storage:/app/dist
+docker cp gontero api-storage:/app/dist
+docker cp granabasto api-storage:/app/dist
+docker cp in api-storage:/app/dist
+docker cp jaguernight api-storage:/app/dist
+docker cp los4hermanos api-storage:/app/dist
+docker cp polirrubrojb api-storage:/app/dist
+docker cp quierosersanto api-storage:/app/dist
+docker cp rango api-storage:/app/dist
+docker cp rocionicola api-storage:/app/dist
+docker cp syf api-storage:/app/dist
+docker cp syp api-storage:/app/dist
+docker cp zass api-storage:/app/dist
+
+use 1516
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use aaron
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use bardo
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use bauma
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use buendescanso
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use chemaxfullcar
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use desdeelllano
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use donaelena
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use elestablo
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use gontero
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use granabasto
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use in
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use jaguernight
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use los4hermanos
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use polirrubrojb
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use quierosersanto
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use rango
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use rocionicola
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use syf
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use syp
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+use zass
+db.configs.find({}).forEach(function(doc) {
+    db.configs.update(
+        { _id: doc._id },
+        { $set: { picture: doc.companyPicture } }
+    );
+});
+
+
+
+1516
+aaron
+bardo
+bauma
+buendescanso
+chemaxfullcar
+desdeelllano
+donaelena
+elestablo
+gontero
+granabasto
+in
+jaguernight
+los4hermanos
+polirrubrojb
+quierosersanto
+rango
+rocionicola
+syf
+syp
+zass

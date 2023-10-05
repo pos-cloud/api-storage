@@ -13,7 +13,7 @@ RUN npm install -g typescript
 RUN npm install
 
 # Copiar archivos necesarios
-COPY pos-cloud-299813-432bdece7851.json .
+COPY pos-cloud-299813-432bdece7851.json /app/dist/
 
 # Copiar y compilar la aplicación
 COPY . .

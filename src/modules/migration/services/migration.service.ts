@@ -68,6 +68,9 @@ export class MigrationService {
               [],
               process.env.GCP_BUCKET_MIGRATION,
             );
+
+            
+            console.log(url);
             await itemCollection.updateOne(
               { _id: document._id },
               {

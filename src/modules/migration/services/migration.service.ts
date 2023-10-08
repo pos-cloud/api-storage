@@ -51,8 +51,11 @@ export class MigrationService {
   ) {
     const promises: Promise<any>[] = [];
     for await (const document of documents) {
+      console.log("database:",database);
+      console.log("nameDirectory:",nameDirectory);
+      console.log("picture:",document.picture);
+
       const file = await readFile(database, nameDirectory, document.picture);
-      console.log("file:",file);
       if (file) {
         const newpromise = new Promise(async (resolve, reject) => {
           try {

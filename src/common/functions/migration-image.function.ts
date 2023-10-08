@@ -20,6 +20,8 @@ export const readFile = async (
       filename,
     );
 
+    console.log(urlFile)
+
     const file = readFileSync(urlFile);
     return file;
   } catch (err) {

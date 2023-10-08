@@ -25,7 +25,7 @@ export class MigrationService {
       const documents = itemCollection.find({
         operationType: { $ne: 'D' },
         picture: { $ne: 'default.jpg' },
-      })
+      }).limit(100);
 
       const arrayItem = await this.arrayPromiseDocument(
         documents,

@@ -50,10 +50,10 @@ export class MigrationService {
     collection: string | ORIGINMEDIA | any,
   ) {
     const promises: Promise<any>[] = [];
-
+    console.log(documents.length)
     for await (const document of documents) {
-      console.log(nameDirectory)
-      console.log(document.picture)
+      //console.log(nameDirectory)
+      //console.log(document.picture)
       const file = await readFile(database, nameDirectory, document.picture);
 
       if (file) {

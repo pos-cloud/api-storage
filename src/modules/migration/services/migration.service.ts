@@ -54,10 +54,6 @@ export class MigrationService {
   ) {
     const promises: Promise<any>[] = [];
     for await (const document of documents) {
-      console.log("database:",database);
-      console.log("nameDirectory:",nameDirectory);
-      console.log("picture:",document.picture);
-
       const file = await readFile(database, nameDirectory, document.picture);
       if (file) {
         const newpromise = new Promise(async (resolve, reject) => {
@@ -72,8 +68,6 @@ export class MigrationService {
               process.env.GCP_BUCKET_MIGRATION,
             );
 
-            
-            console.log("url:",url);
             await itemCollection.updateOne(
               { _id: document._id },
               {
@@ -85,26 +79,7 @@ export class MigrationService {
             resolve(true);
           }
         });
-        ///////////////////////////////////
-  
-        // break
         promises.push(newpromise);
-        //   const url = await this.uploadService.save(
-        //     database,
-        //     collection,
-        //     '',
-        //     file,
-        //     document.picture,
-        //     [],
-        //     process.env.GCP_BUCKET_MIGRATION,
-        //   );
-        //   console.log(document._id);
-        // //   await itemCollection.updateOne(
-        // //     { _id: document._id },
-        // //     {
-        // //       $set: { picture: url },
-        // //     },
-        // //   );
       }
     }
     return promises;

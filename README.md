@@ -75,7 +75,7 @@ jobs:
       - run: docker run -v /home:/home --restart unless-stopped --net host --name api-storage -d -it -p 3000:3000 api-storage
 
 
-       docker cp rango api-storage:/app/dist
+       docker cp polirrubrojb/images api-storage-poscloud:/app/dist/images
 
 
 db.configs.find({}).forEach(function(doc) {
@@ -95,7 +95,7 @@ db.configs.find({}).forEach(function(doc) {
 db.configs.find({}).forEach(function(doc) {
     db.configs.update(
         { _id: doc._id },
-        { $set: { companyPicture: "https://storage.googleapis.com/poscloud/bardo/companies/1696415011397-bardo-(2).png" } }
+        { $set: { companyPicture: "https://storage.googleapis.com/poscloud/desdeelllano/configs/1696380823963-62f5130dbe63c50026ea75ee-images.jpg" } }
     );
 });
 

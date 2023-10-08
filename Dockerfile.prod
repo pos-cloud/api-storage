@@ -1,0 +1,26 @@
+FROM node:18.7.0
+
+# Crear directorio de la aplicación
+WORKDIR /app
+
+# Copiar archivos de configuración
+COPY tsconfig.json .
+COPY package.json .
+COPY tsconfig.build.json .
+
+# Instalar TypeScript globalmente y las dependencias de npm
+RUN npm install -g typescript
+RUN npm install
+
+# Copiar archivos necesarios
+COPY pos-cloud-299813-432bdece7851.json /app/dist/
+
+# Copiar y compilar la aplicación
+COPY . .
+
+# Construir la aplicación
+RUN npm run build
+
+# Establecer el directorio de trabajo y el comando de inicio
+WORKDIR /app/dist
+CMD ["node", "main.js"]

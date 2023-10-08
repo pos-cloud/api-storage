@@ -1,0 +1,39 @@
+name: Deploy Prod to DonWeb
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: prod
+
+    env:
+        GCP_BUCKET: ${{ secrets.GCP_BUCKET }}
+        GCP_KEY_FILE_PATH: ${{ secrets.GCP_KEY_FILE_PATH }}
+        GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Stop and remove existing container
+        run: docker rm -f api-storage-poscloud || true
+
+      - name: Build Docker image
+        run: docker build -t api-storage-poscloud -f Dockerfile.dev .
+
+      - name: Run Docker container
+        run: |
+          docker run \
+            -e GCP_BUCKET=$GCP_BUCKET \
+            -e GCP_KEY_FILE_PATH=$GCP_KEY_FILE_PATH \
+            -e GCP_PROJECT_ID=$GCP_PROJECT_ID \
+            -e TOKEN_SECRET=$TOKEN_SECRET \
+            -v /home:/home \
+            --restart unless-stopped \
+            --net host \
+            --name api-storage-poscloud \
+            -d -it -p 303:303 api-storage-poscloud

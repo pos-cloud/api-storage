@@ -13,30 +13,43 @@ export class MigrationService {
 
   async migrationImages(database: string) {
     await this.databaseService.initConnection(database);
-    const collectionEmun = Object.values(ORIGINMEDIA);
+    const collectionEnum = Object.values(ORIGINMEDIA);
 
-    const promises: Promise<any>[] = [];
+    const batchSize = 100; // Tamaño del lote
 
-    for (let collection of collectionEmun) {
+    for (let collection of collectionEnum) {
       let nameDirectory: string = this.getDirectory(collection);
 
       const itemCollection = this.databaseService.getCollection(collection);
 
-      const documents = itemCollection.find({});
+      let skip = 0;
 
-      const arrayItem = this.arrayPromiseDocument(
-        documents,
-        database,
-        nameDirectory,
-        itemCollection,
-        collection,
-      );
-      promises.concat(arrayItem);
+      while (true) {
+        const documents = itemCollection
+          .find({
+            operationType: { $ne: 'D' },
+            picture: { $ne: 'default.jpg' },
+          })
+          .limit(batchSize)
+          .skip(skip);
+
+        if ((await documents.count()) === 0) {
+          break; // No hay más documentos
+        }
+
+        const arrayItem = await this.arrayPromiseDocument(
+          documents,
+          database,
+          nameDirectory,
+          itemCollection,
+          collection,
+        );
+
+        await Promise.all(arrayItem);
+
+        skip += batchSize;
+      }
     }
-
-    await Promise.all(promises).then((values) => {
-      //console.log('values',values);
-    });
   }
 
   private async arrayPromiseDocument(
@@ -63,41 +76,29 @@ export class MigrationService {
               [],
               process.env.GCP_BUCKET_MIGRATION,
             );
+
             await itemCollection.updateOne(
               { _id: document._id },
               {
                 $set: { picture: url },
               },
             );
+
+            //delete document;
             resolve(true);
-          } catch (errr) {
+          } catch (err) {
+            console.error(`Error processing document: ${err}`);
             resolve(true);
           }
         });
-        ///////////////////////////////////
-  
-        // break
+
         promises.push(newpromise);
-        //   const url = await this.uploadService.save(
-        //     database,
-        //     collection,
-        //     '',
-        //     file,
-        //     document.picture,
-        //     [],
-        //     process.env.GCP_BUCKET_MIGRATION,
-        //   );
-        //   console.log(document._id);
-        // //   await itemCollection.updateOne(
-        // //     { _id: document._id },
-        // //     {
-        // //       $set: { picture: url },
-        // //     },
-        // //   );
       }
     }
+
     return promises;
   }
+
   private getDirectory(collection: string): string {
     let nameDirectory: string = '';
 
@@ -120,6 +121,7 @@ export class MigrationService {
       default:
         nameDirectory = collection;
     }
+
     return nameDirectory;
   }
 }

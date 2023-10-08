@@ -27,8 +27,6 @@ export class MigrationService {
         picture: { $ne: 'default.jpg' },
       })
 
-      console.log(documents)
-
       const arrayItem = await this.arrayPromiseDocument(
         documents,
         database,
@@ -55,6 +53,7 @@ export class MigrationService {
 
     for await (const document of documents) {
       const file = await readFile(database, nameDirectory, document.picture);
+      console.log(file)
 
       if (file) {
         const newpromise = new Promise(async (resolve, reject) => {

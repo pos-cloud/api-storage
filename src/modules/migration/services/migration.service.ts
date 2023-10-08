@@ -27,6 +27,8 @@ export class MigrationService {
         picture: { $ne: 'default.jpg' },
       })
 
+      console.log(documents)
+
       const arrayItem = this.arrayPromiseDocument(
         documents,
         database,

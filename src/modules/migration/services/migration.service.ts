@@ -29,7 +29,7 @@ export class MigrationService {
 
       console.log(documents)
 
-      const arrayItem = this.arrayPromiseDocument(
+      const arrayItem = await this.arrayPromiseDocument(
         documents,
         database,
         nameDirectory,
